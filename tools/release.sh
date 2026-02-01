@@ -49,6 +49,8 @@ sed -e '/\$after-header-includes\.latex()\$/ {' -e 'r template-multi-file/after-
 sed -e '/\$hypersetup\.latex()\$/ {' -e 'r template-multi-file/hypersetup.latex' -e 'd' -e '}' $SEDOPTION "${distFolderName}/eisvogel.beamer"
 sed -e '/\$passoptions\.latex()\$/ {' -e 'r template-multi-file/passoptions.latex' -e 'd' -e '}' $SEDOPTION "${distFolderName}/eisvogel.beamer"
 
+# Clean up sed backup files created on macOS
+rm -f "${distFolderName}/eisvogel.latex''" "${distFolderName}/eisvogel.beamer''"
 
 # create folder for the release eisvogel (ZIP and tar.gz)
 cp -r "examples" "${archiveFolder}/examples"

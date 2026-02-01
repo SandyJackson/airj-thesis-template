@@ -214,6 +214,28 @@ This template defines some new variables to control the appearance of the result
 
     A visual overview of the length units is available at <https://github.com/tweh/tex-units>.
 
+  - `department` (defaults to not shown)
+
+    The department or program name displayed below the university logo on the title page. Useful for thesis title pages to show the academic program. Example: `"Infection, Inflammation and Immunity PhD:"`.
+
+  - `assignment` (defaults to not shown)
+
+    The assignment or thesis type displayed on the title page. Examples: `"Final Thesis"`, `"PhD Thesis"`, `"Master's Thesis"`, `"Honours Thesis"`.
+
+  - `supervisor` (defaults to not shown)
+
+    The name of the primary supervisor, displayed with the label "Primary Supervisor:" on thesis title pages. Example: `"Prof M.P.W. Grocott"`.
+
+  - `cosupervisor` (defaults to not shown)
+
+    A list of co-supervisor names, displayed with the label "Co-Supervisors:" on thesis title pages. Provide as a YAML list:
+
+    ``` yaml
+    cosupervisor:
+      - "Dr. First Co-supervisor"
+      - "Dr. Second Co-supervisor"
+    ```
+
   - `first-chapter` (defaults to `1`)
 
     if typesetting a book with chapter numbers, specifies the number that will be assigned to the first chapter
@@ -311,6 +333,50 @@ For PDFs with [numbered sections](https://pandoc.org/MANUAL.html#options-affecti
 ``` bash
 pandoc example.md -o example.pdf --template eisvogel --number-sections
 ```
+
+### Thesis Title Page
+
+For academic theses (PhD, Master's, Honours), you can create a formal title page with institutional branding and supervisor information. The template supports university logos, department/program names, thesis types, and supervisor details.
+
+Example YAML metadata for a thesis:
+
+``` yaml
+---
+title: "Recovery trajectories after major surgery and patient centred postoperative outcomes: from description to prediction"
+author: "Alexander I.R. Jackson"
+date: "February 2025"
+titlepage: true
+titlepage-logo: "university-logo.png"
+logo-width: 60mm
+titlepage-background: "background.pdf"
+titlepage-rule-color: "006699"
+titlepage-rule-height: 4
+titlepage-text-color: "5F5F5F"
+department: "Infection, Inflammation and Immunity PhD:"
+assignment: "Final Thesis"
+supervisor: "Prof M.P.W. Grocott"
+cosupervisor:
+  - "Dr. First Co-supervisor"
+  - "Dr. Second Co-supervisor"
+---
+
+# Introduction
+
+Your thesis content begins here...
+```
+
+This creates a title page with:
+- University logo at the top (centered)
+- Department/program name below the logo
+- Thesis type (e.g., "Final Thesis")
+- Main title (large, bold)
+- Candidate name with "Candidate:" label
+- Primary supervisor with "Primary Supervisor:" label
+- Co-supervisors (if any) with "Co-Supervisors:" label
+- Date at the bottom
+- Optional background graphics
+
+All thesis-specific fields (`department`, `assignment`, `supervisor`, `cosupervisor`) are optional and maintain backward compatibility with standard documents.
 
 ### Syntax Highlighting with Listings
 

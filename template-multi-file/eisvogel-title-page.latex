@@ -21,45 +21,75 @@ $endif$
 \par
 \noindent
 
+% University logo at top (moved from bottom)
+$if(titlepage-logo)$
+\vspace{1em}
+\begin{center}
+\includegraphics[width=$if(logo-width)$$logo-width$$else$35mm$endif$]{$titlepage-logo$}
+\end{center}
+\vspace{0.5em}
+$endif$
+
+% Department or program name
+$if(department)$
+\noindent {\large \textsf{$department$}}
+\vspace{0.3em}
+$endif$
+
+% Assignment or thesis type
+$if(assignment)$
+\noindent {\large \textsf{$assignment$}}
+$endif$
+
+% Flexible spacing to push title down
+\vfill
+
+% Title section
 $if(titlepage-background)$
 % The titlepage with a background image has other text spacing and text size
 {
   \setstretch{2}
-  \vfill
-  \vskip -8em
   \noindent {\huge \textbf{\textsf{$title$}}}
   $if(subtitle)$
   \vskip 1em
   {\Large \textsf{$subtitle$}}
   $endif$
-  \vskip 2em
-  \noindent {\Large \textsf{$for(author)$$author$$sep$, $endfor$} \vskip 0.6em \textsf{$date$}}
-  \vfill
 }
 $else$
 {
   \setstretch{1.4}
-  \vfill
   \noindent {\huge \textbf{\textsf{$title$}}}
   $if(subtitle)$
   \vskip 1em
   {\Large \textsf{$subtitle$}}
   $endif$
-  \vskip 2em
-  \noindent {\Large \textsf{$for(author)$$author$$sep$, $endfor$}}
-  \vfill
 }
 $endif$
 
-$if(titlepage-logo)$
-\noindent
-\includegraphics[width=$if(logo-width)$$logo-width$$else$35mm$endif$, left]{$titlepage-logo$}
+% Spacing before author/supervisor information
+\vspace{3em}
+
+% Candidate (author) with label
+\noindent {\Large \textsf{Candidate: $for(author)$$author$$sep$, $endfor$}}
+
+% Primary supervisor
+$if(supervisor)$
+\vspace{1em}
+\noindent {\Large \textsf{Primary Supervisor: $supervisor$}}
 $endif$
 
-$if(titlepage-background)$
-$else$
-\textsf{$date$}
+% Co-supervisors (if any)
+$if(cosupervisor)$
+\vspace{0.5em}
+\noindent {\Large \textsf{Co-Supervisors: $for(cosupervisor)$$cosupervisor$$sep$, $endfor$}}
 $endif$
+
+% Spacing before date
+\vspace{2em}
+
+% Date
+\noindent \textsf{$date$}
+
 \end{flushleft}
 \end{titlepage}
 \restoregeometry
