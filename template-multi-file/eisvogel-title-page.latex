@@ -1,96 +1,98 @@
 $if(titlepage)$
 \begin{titlepage}
-$if(titlepage-background)$
-\newgeometry{top=2cm, right=4cm, bottom=3cm, left=4cm}
-$else$
-\newgeometry{left=6cm}
-$endif$
-$if(titlepage-color)$
-\definecolor{titlepage-color}{HTML}{$titlepage-color$}
-\newpagecolor{titlepage-color}\afterpage{\restorepagecolor}
-$endif$
-$if(titlepage-background)$
-\tikz[remember picture,overlay] \node[inner sep=0pt] at (current page.center){\includegraphics[width=\paperwidth,height=\paperheight]{$titlepage-background$}};
-$endif$
-\newcommand{\colorRule}[3][black]{\textcolor[HTML]{#1}{\rule{#2}{#3}}}
-\begin{flushleft}
-\noindent
-\\[-1em]
-\color[HTML]{$if(titlepage-text-color)$$titlepage-text-color$$else$5F5F5F$endif$}
-\makebox[0pt][l]{\colorRule[$if(titlepage-rule-color)$$titlepage-rule-color$$else$435488$endif$]{1.3\textwidth}{$if(titlepage-rule-height)$$titlepage-rule-height$$else$4$endif$pt}}
-\par
-\noindent
-
-% University logo at top (moved from bottom)
-$if(titlepage-logo)$
-\vspace{1em}
-\begin{center}
-\includegraphics[width=$if(logo-width)$$logo-width$$else$35mm$endif$]{$titlepage-logo$}
-\end{center}
-\vspace{0.5em}
-$endif$
-
-% Department or program name
-$if(department)$
-\noindent {\large \textsf{$department$}}
-\vspace{0.3em}
-$endif$
-
-% Assignment or thesis type
-$if(assignment)$
-\noindent {\large \textsf{$assignment$}}
-$endif$
-
-% Flexible spacing to push title down
-\vfill
-
-% Title section
-$if(titlepage-background)$
-% The titlepage with a background image has other text spacing and text size
-{
-  \setstretch{2}
-  \noindent {\huge \textbf{\textsf{$title$}}}
-  $if(subtitle)$
-  \vskip 1em
-  {\Large \textsf{$subtitle$}}
+  $if(titlepage-background)$
+  \newgeometry{top=2cm, right=4cm, bottom=3cm, left=4cm}
+  $else$
+  \newgeometry{left=6cm}
   $endif$
-}
-$else$
-{
-  \setstretch{1.4}
-  \noindent {\huge \textbf{\textsf{$title$}}}
-  $if(subtitle)$
-  \vskip 1em
-  {\Large \textsf{$subtitle$}}
+  $if(titlepage-color)$
+  \definecolor{titlepage-color}{HTML}{$titlepage-color$}
+  \newpagecolor{titlepage-color}\afterpage{\restorepagecolor}
   $endif$
-}
-$endif$
+  $if(titlepage-background)$
+  \tikz[remember picture,overlay] \node[inner sep=0pt] at (current
+  page.center){\includegraphics[width=\paperwidth,height=\paperheight]{$titlepage-background$}};
+  $endif$
+  \newcommand{\colorRule}[3][black]{\textcolor[HTML]{#1}{\rule{#2}{#3}}}
+  \begin{flushleft}
+    \noindent
+    \\[-1em]
+    \color[HTML]{$if(titlepage-text-color)$$titlepage-text-color$$else$5F5F5F$endif$}
+    \makebox[0pt][l]{\colorRule[$if(titlepage-rule-color)$$titlepage-rule-color$$else$435488$endif$]{1.3\textwidth}{$if(titlepage-rule-height)$$titlepage-rule-height$$else$4$endif$pt}}
+    \par
+    \noindent
 
-% Spacing before author/supervisor information
-\vspace{3em}
+    % University logo at top (moved from bottom)
+    $if(titlepage-logo)$
+    \vspace{1em}
+    \begin{center}
+      \includegraphics[width=$if(logo-width)$$logo-width$$else$35mm$endif$]{$titlepage-logo$}
+    \end{center}
+    \vspace{0.5em}
+    $endif$
 
-% Candidate (author) with label
-\noindent {\Large \textsf{Candidate: $for(author)$$author$$sep$, $endfor$}}
+    % Department or program name
+    $if(department)$
+    \noindent {\large \textsf{$department$}}
+    \vspace{0.3em}
+    $endif$
 
-% Primary supervisor
-$if(supervisor)$
-\vspace{1em}
-\noindent {\Large \textsf{Primary Supervisor: $supervisor$}}
-$endif$
+    % Assignment or thesis type
+    $if(assignment)$
+    \noindent {\large \textsf{$assignment$}}
+    $endif$
 
-% Co-supervisors (if any)
-$if(cosupervisor)$
-\vspace{0.5em}
-\noindent {\Large \textsf{Co-Supervisors: $for(cosupervisor)$$cosupervisor$$sep$, $endfor$}}
-$endif$
+    % Flexible spacing to push title down
+    \vfill
 
-% Spacing before date
-\vspace{2em}
+    % Title section
+    $if(titlepage-background)$
+    % The titlepage with a background image has other text spacing and text size
+    {
+      \setstretch{2}
+      \noindent {\huge \textbf{\textsf{$title$}}}
+      $if(subtitle)$
+      \vskip 1em
+      {\Large \textsf{$subtitle$}}
+      $endif$
+    }
+    $else$
+    {
+      \setstretch{1.4}
+      \noindent {\huge \textbf{\textsf{$title$}}}
+      $if(subtitle)$
+      \vskip 1em
+      {\Large \textsf{$subtitle$}}
+      $endif$
+    }
+    $endif$
 
-% Date
-\noindent \textsf{$date$}
+    % Spacing before author/supervisor information
+    \vspace{3em}
 
-\end{flushleft}
+    % Candidate (author) with label
+    \noindent {\Large \textsf{Candidate: $for(author)$$author$$sep$, $endfor$}}
+
+    % Primary supervisor
+    $if(supervisor)$
+    \vspace{1em}
+    \noindent {\Large \textsf{Primary Supervisor: $supervisor$}}
+    $endif$
+
+    % Co-supervisors (if any)
+    $if(cosupervisor)$
+    \vspace{0.5em}
+    \noindent {\Large \textsf{Co-Supervisors:
+    $for(cosupervisor)$$cosupervisor$$sep$, $endfor$}}
+    $endif$
+
+    % Spacing before date
+    \vspace{2em}
+
+    % Date
+    \noindent \textsf{$date$}
+
+  \end{flushleft}
 \end{titlepage}
 \restoregeometry
 \pagenumbering{arabic}
