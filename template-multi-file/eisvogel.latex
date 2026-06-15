@@ -171,9 +171,7 @@ $if(toc-title)$
 $endif$
 {
 $if(colorlinks)$
-$if(toccolor)$
-\hypersetup{linkcolor=$toccolor$}
-$endif$
+\hypersetup{linkcolor=$if(toccolor)$$toccolor$$else$black$endif$}
 $endif$
 \setcounter{tocdepth}{$toc-depth$}
 \tableofcontents
