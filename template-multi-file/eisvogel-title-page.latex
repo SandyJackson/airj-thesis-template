@@ -29,37 +29,57 @@ $endif$
 $if(titlepage-background)$
 % The titlepage with a background image has other text spacing and text size
 {
-  \setstretch{2}
-  \vfill
-  \vskip -8cm
-  $if(assignment)$
-  \noindent {\LARGE \textsf{$assignment$}}
-  \vskip 1cm
+  \setstretch{1.25}
+  \vspace{0.2cm}
+
+  \begin{minipage}[t][0.56\textheight][s]{\textwidth}
+
+  \begin{center}
+  $if(school)$
+  {\Large \textsf{$for(school)$$school$$sep$\linebreak $endfor$}}
   $endif$
+
+  \vfill
+
   \noindent {\huge \textbf{\textsf{$title$}}}
   $if(subtitle)$
   \vskip 1em
   {\Large \textsf{$subtitle$}}
   $endif$
-  \vskip 2em
-  $if(supervisor)$
-  \noindent {\Large \textsf{Candidate: $for(author)$$author$$sep$, $endfor$} \vskip 0.6em}
-  \noindent {\Large \textsf{Primary Supervisor: $supervisor$}}
-  $if(cosupervisor)$
-  \vskip 0.6em
-  \noindent {\Large \textsf{Co-Supervisors: $for(cosupervisor)$$cosupervisor$$sep$, $endfor$}}
-  $endif$
-  $else$
-  $if(cosupervisor)$
-  \noindent {\Large \textsf{Candidate: $for(author)$$author$$sep$, $endfor$} \vskip 0.6em}
-  \noindent {\Large \textsf{Co-Supervisors: $for(cosupervisor)$$cosupervisor$$sep$, $endfor$}}
-  $else$
-  \noindent {\Large \textsf{$for(author)$$author$$sep$, $endfor$}}
-  $endif$
+
+  $if(doi)$
+  \vskip 0.8em
+  {\large \textsf{DOI: \textcolor[HTML]{$if(titlepage-rule-color)$$titlepage-rule-color$$else$435488$endif$}{$doi$}}}
   $endif$
 
-  \textsf{$date$}
   \vfill
+
+  {\Large \textit{by}}
+  \vskip 0.6em
+  {\LARGE \textbf{\textsf{$for(author)$$author$$sep$, $endfor$}}}
+  $if(postnomials)$
+  \vskip 0.6em
+  {\Large \textsf{$postnomials$}}
+  $endif$
+  $if(orcid)$
+  \vskip 0.6em
+  {\large \textsf{ORCiD: \textcolor[HTML]{$if(titlepage-rule-color)$$titlepage-rule-color$$else$435488$endif$}{$orcid$}}}
+  $endif$
+
+  $if(degree)$
+  \vfill
+
+  {\large \textit{A thesis for the degree of}}
+  \vskip 0.4em
+  {\large \textit{$degree$}}
+  $endif$
+
+  \vfill
+
+  {\Large \textsf{$date$}}
+  \end{center}
+
+  \end{minipage}
 }
 $else$
 {
