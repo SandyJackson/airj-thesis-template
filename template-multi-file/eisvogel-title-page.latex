@@ -22,8 +22,14 @@ $endif$
 \noindent
 
 $if(titlepage-logo)$
+$if(titlepage-logo-align)$
+\begin{$titlepage-logo-align$}
+\includegraphics[width=$if(logo-width)$$logo-width$$else$35mm$endif$]{$titlepage-logo$}
+\end{$titlepage-logo-align$}
+$else$
 \noindent
 \includegraphics[width=$if(logo-width)$$logo-width$$else$35mm$endif$, left]{$titlepage-logo$}
+$endif$
 $endif$
 
 $if(titlepage-background)$
@@ -49,7 +55,7 @@ $if(titlepage-background)$
 
   $if(doi)$
   \vskip 0.8em
-  {\large \textsf{DOI: \textcolor[HTML]{$if(titlepage-rule-color)$$titlepage-rule-color$$else$435488$endif$}{$doi$}}}
+  {\large \textsf{DOI: \href{https://doi.org/$doi$}{\textcolor[HTML]{$if(titlepage-rule-color)$$titlepage-rule-color$$else$435488$endif$}{$doi$}}}}
   $endif$
 
   \vfill
@@ -63,7 +69,7 @@ $if(titlepage-background)$
   $endif$
   $if(orcid)$
   \vskip 0.6em
-  {\large \textsf{ORCiD: \textcolor[HTML]{$if(titlepage-rule-color)$$titlepage-rule-color$$else$435488$endif$}{$orcid$}}}
+  {\large \textsf{ORCiD: \href{https://orcid.org/$orcid$}{\textcolor[HTML]{$if(titlepage-rule-color)$$titlepage-rule-color$$else$435488$endif$}{$orcid$}}}}
   $endif$
 
   $if(degree)$
